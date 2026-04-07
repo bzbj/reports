@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Cloud War: Amazon vs. Microsoft vs. Google</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; background-color: #0F172A; color: #F8FAFC; }
+  .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+  .chart-container { position: relative; width: 100%; max-width: 760px; margin-left: auto; margin-right: auto; height: 240px; max-height: 300px; }
+  @media (min-width: 768px) { .chart-container { height: 280px; } }
+  .workload-chart { height: 300px; max-height: 320px; }
+  .azure-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+  .azure-card { min-height: 190px; }
+  @media (max-width: 767px) {
+    .azure-flow { grid-template-columns: 1fr; }
+    .azure-card { min-height: 0; }
+  }
+  .text-aws { color: #FFB020; }
+  .text-azure { color: #00C2FF; }
+  .text-gcp { color: #00E676; }
+  .bg-aws { background-color: #FFB020; }
+  .bg-azure { background-color: #00C2FF; }
+  .bg-gcp { background-color: #00E676; }
+</style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+<div style="display:none;" id="infographic-meta-data">
+  CONFIRMATION: NEITHER Mermaid JS NOR SVG were used anywhere in the output.
+  PLAN SUMMARY: The narrative flows from high-level market impact (big numbers) -> temporal revenue shifts (line chart) -> profitability and operational efficiency (bar chart) -> current market distribution (donut chart) -> deep dive into AI specific workload adoption (stacked bar) -> qualitative analysis of the leading ecosystem (HTML diagram).
+  VISUALIZATION CHOICES:
+  1. Market Growth (Big Numbers): Inform -> Standout stats.
+  2. Revenue Trajectory (Line Chart): Change -> Show trends over time. Canvas based.
+  3. Operating Margins (Bar Chart): Compare -> Value across categories. Canvas based.
+  4. Market Share Snapshot (Donut Chart): Inform/Compare -> Simple proportion. Canvas based.
+  5. AI Revenue Drivers (Stacked Bar): Compare -> Composition within categories. Canvas based.
+  6. Ecosystem Architecture (Structured HTML): Organize -> Process flows without SVG/Mermaid.
+  Chosen Palette: Cybernetic Brights (Deep Slate Background, Azure Cyan, AWS Orange, GCP Green).
+</div>
+
+<div class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-6 py-8">
+  
+  <header class="text-center mb-10">
+    <div class="inline-block px-3 py-1 rounded-full bg-slate-800 text-cyan-400 font-semibold tracking-wider text-xs mb-3 uppercase">Q1 2025 - Q4 2025 Market Analysis</div>
+    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">The AI Cloud <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">Supremacy War</span></h1>
+    <p class="text-base md:text-lg text-slate-400 max-w-3xl mx-auto">Generative AI has fundamentally reshaped the cloud infrastructure landscape. We analyze the recent quarterly performance of Amazon (AWS), Microsoft (Azure), and Google (GCP) to determine who is truly capturing the AI demand.</p>
+  </header>
+
+  <section class="mb-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="glass-card rounded-xl p-5 text-center transform transition duration-500 hover:scale-105">
+        <div class="text-3xl mb-3">☁️</div>
+        <h3 class="text-slate-400 text-lg font-semibold mb-2">Total Cloud Market YoY</h3>
+        <div class="text-4xl font-bold text-white mb-2">+24.5%</div>
+        <p class="text-sm text-slate-500">Accelerated by Enterprise AI adoption</p>
+      </div>
+      <div class="glass-card rounded-xl p-5 text-center transform transition duration-500 hover:scale-105 border-t-4 border-t-cyan-500">
+        <div class="text-3xl mb-3">🚀</div>
+        <h3 class="text-slate-400 text-lg font-semibold mb-2">Fastest Growing Vendor</h3>
+        <div class="text-4xl font-bold text-azure mb-2">Microsoft</div>
+        <p class="text-sm text-slate-500">Driven by OpenAI integration stack</p>
+      </div>
+      <div class="glass-card rounded-xl p-5 text-center transform transition duration-500 hover:scale-105 border-t-4 border-t-orange-500">
+        <div class="text-3xl mb-3">💰</div>
+        <h3 class="text-slate-400 text-lg font-semibold mb-2">Highest Total Revenue</h3>
+        <div class="text-4xl font-bold text-aws mb-2">Amazon</div>
+        <p class="text-sm text-slate-500">Massive existing infrastructure base</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-10">
+    
+    <section class="glass-card rounded-xl p-5 md:p-6">
+      <h2 class="text-xl font-bold mb-3 flex items-center"><span class="text-xl mr-2">📈</span> Quarterly Revenue Trajectory</h2>
+      <p class="text-slate-400 mb-4 text-sm">While AWS remains the largest provider by absolute revenue, Microsoft's Azure has demonstrated the steepest growth curve over the last four quarters, rapidly closing the gap. Google Cloud maintains steady, profitable growth.</p>
+      <div class="chart-container">
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </section>
+
+    <section class="glass-card rounded-xl p-5 md:p-6">
+      <h2 class="text-xl font-bold mb-3 flex items-center"><span class="text-xl mr-2">📊</span> Operating Margins Breakdown</h2>
+      <p class="text-slate-400 mb-4 text-sm">Profitability tells a distinct story. Azure benefits from higher-margin AI software services (Copilot, OpenAI APIs). AWS maintains strong infrastructure margins, while GCP has successfully transitioned into sustained profitability.</p>
+      <div class="chart-container">
+        <canvas id="marginChart"></canvas>
+      </div>
+    </section>
+    
+  </div>
+
+  <section class="mb-10">
+    <div class="glass-card rounded-xl p-5 md:p-6">
+      <h2 class="text-2xl font-bold mb-4 text-center">The AI Workload Catalyst</h2>
+      <p class="text-slate-400 text-center max-w-4xl mx-auto mb-6 text-base">AI isn't just driving compute; it's driving distinct layers of cloud services. Microsoft is capturing the high-level PaaS/SaaS AI API market, whereas Amazon and Google are battling fiercely for the foundational model training and proprietary silicon (IaaS) tier.</p>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 items-center">
+        <div class="lg:col-span-1">
+          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700 mb-3">
+            <h4 class="text-white font-bold mb-2 flex justify-between"><span>Infrastructure (IaaS)</span> <span class="text-aws font-mono">AWS Leads</span></h4>
+            <p class="text-sm text-slate-400">Raw compute, custom silicon (Trainium/Inferentia), and massive GPU clusters for foundation model builders.</p>
+          </div>
+          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700 mb-3">
+            <h4 class="text-white font-bold mb-2 flex justify-between"><span>Platform APIs (PaaS)</span> <span class="text-azure font-mono">Azure Leads</span></h4>
+            <p class="text-sm text-slate-400">Managed AI services, OpenAI endpoints, and developer tooling for enterprise application integration.</p>
+          </div>
+          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700">
+            <h4 class="text-white font-bold mb-2 flex justify-between"><span>Data & Analytics</span> <span class="text-gcp font-mono">GCP Strong</span></h4>
+            <p class="text-sm text-slate-400">Vector databases, BigQuery ML integrations, and open-source model ecosystems (Vertex AI).</p>
+          </div>
+        </div>
+        
+        <div class="lg:col-span-2 chart-container workload-chart">
+          <canvas id="workloadChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-10">
+    <section class="lg:col-span-1 glass-card rounded-xl p-5 md:p-6 flex flex-col justify-center">
+      <h2 class="text-xl font-bold mb-3">Current Market Composition</h2>
+      <p class="text-slate-400 mb-4 text-sm">As of Q4 2025, the "Big Three" control the vast majority of the global cloud market. Microsoft's aggressive AI strategy has allowed it to consume market share from smaller legacy providers.</p>
+      <div class="relative w-full aspect-square max-w-[240px] mx-auto">
+        <canvas id="marketShareChart"></canvas>
+        <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+           <span class="text-3xl font-bold text-white">67%</span>
+           <span class="text-xs text-slate-400 uppercase tracking-widest">Top 3 Total</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="lg:col-span-2 glass-card rounded-xl p-5 md:p-6">
+      <h2 class="text-xl font-bold mb-3">Why Microsoft Azure is the Primary AI Beneficiary</h2>
+      <p class="text-slate-400 mb-5 text-sm">Microsoft's strategic architecture creates a highly profitable feedback loop. By integrating AI at every layer of the enterprise stack, they monetize the same underlying compute infrastructure multiple times.</p>
+      
+      <div class="azure-flow">
+        
+        <div class="azure-card bg-slate-800 rounded-lg p-4 border-l-4 border-azure flex flex-col justify-center relative overflow-hidden group">
+          <div class="absolute -right-3 -top-3 text-5xl opacity-10 group-hover:opacity-20 transition-opacity duration-300">⚙️</div>
+          <div class="text-azure font-bold text-base mb-2">Layer 1: Compute</div>
+          <h4 class="text-white font-semibold mb-1">Azure AI Infrastructure</h4>
+          <p class="text-xs text-slate-400">Massive GPU deployments handling the raw computational load for model training and inference.</p>
+        </div>
+
+        <div class="azure-card bg-slate-800 rounded-lg p-4 border-l-4 border-azure flex flex-col justify-center relative overflow-hidden group">
+          <div class="absolute -right-3 -top-3 text-5xl opacity-10 group-hover:opacity-20 transition-opacity duration-300">🧠</div>
+          <div class="text-azure font-bold text-base mb-2">Layer 2: Models</div>
+          <h4 class="text-white font-semibold mb-1">Azure OpenAI Service</h4>
+          <p class="text-xs text-slate-400">Exclusive cloud provider for OpenAI models (GPT-4.5), offering enterprise-grade security and compliance.</p>
+        </div>
+
+        <div class="azure-card bg-slate-800 rounded-lg p-4 border-l-4 border-azure flex flex-col justify-center relative overflow-hidden group">
+          <div class="absolute -right-3 -top-3 text-5xl opacity-10 group-hover:opacity-20 transition-opacity duration-300">💼</div>
+          <div class="text-azure font-bold text-base mb-2">Layer 3: SaaS</div>
+          <h4 class="text-white font-semibold mb-1">Copilot Ecosystem</h4>
+          <p class="text-xs text-slate-400">High-margin integration into Office 365, GitHub, and Dynamics, driving immediate user value.</p>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <footer class="text-center text-slate-500 text-sm mt-8 pt-6 border-t border-slate-800">
+    <p>Data presented is simulated for analytical demonstration based on Q4 2025 market projections.</p>
+    <p class="mt-2 text-xs">Developed by Canvas Infographics | UI/UX & Data Visualization Expert</p>
+  </footer>
+
+</div>
+
+<script>
+  function wrapLabelText(label) {
+    if (label.length <= 16) return label;
+    const words = label.split(' ');
+    const lines = [];
+    let currentLine = '';
+    words.forEach(word => {
+      if ((currentLine + word).length > 16) {
+        if (currentLine) lines.push(currentLine.trim());
+        currentLine = word + ' ';
+      } else {
+        currentLine += word + ' ';
+      }
+    });
+    if (currentLine) lines.push(currentLine.trim());
+    return lines;
+  }
+
+  const tooltipConfig = {
+    tooltip: {
+      backgroundColor: 'rgba(15, 23, 42, 0.9)',
+      titleColor: '#F8FAFC',
+      bodyColor: '#cbd5e1',
+      borderColor: 'rgba(255,255,255,0.1)',
+      borderWidth: 1,
+      padding: 12,
+      callbacks: {
+        title: function(tooltipItems) {
+          const item = tooltipItems[0];
+          let label = item.chart.data.labels[item.dataIndex];
+          if (Array.isArray(label)) {
+            return label.join(' ');
+          } else {
+            return label;
+          }
+        }
+      }
+    }
+  };
+
+  const commonOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    color: '#cbd5e1',
+    plugins: {
+      legend: {
+        labels: { color: '#cbd5e1', font: { family: 'Inter', size: 12 } }
+      },
+      ...tooltipConfig
+    },
+    scales: {
+      x: { 
+        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+        ticks: { color: '#94a3b8', font: { family: 'Inter' } }
+      },
+      y: { 
+        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+        ticks: { color: '#94a3b8', font: { family: 'Inter' } }
+      }
+    }
+  };
+
+  const rawQuarters = ['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025'];
+  const quarters = rawQuarters.map(wrapLabelText);
+
+  const revCtx = document.getElementById('revenueChart').getContext('2d');
+  new Chart(revCtx, {
+    type: 'line',
+    data: {
+      labels: quarters,
+      datasets: [
+        {
+          label: 'Amazon Web Services (AWS)',
+          data: [24.5, 25.8, 27.2, 29.1],
+          borderColor: '#FFB020',
+          backgroundColor: 'rgba(255, 176, 32, 0.1)',
+          borderWidth: 3,
+          pointBackgroundColor: '#FFB020',
+          pointRadius: 4,
+          fill: true,
+          tension: 0.4
+        },
+        {
+          label: 'Microsoft Azure',
+          data: [22.1, 24.3, 27.5, 31.0],
+          borderColor: '#00C2FF',
+          backgroundColor: 'rgba(0, 194, 255, 0.1)',
+          borderWidth: 3,
+          pointBackgroundColor: '#00C2FF',
+          pointRadius: 4,
+          fill: true,
+          tension: 0.4
+        },
+        {
+          label: 'Google Cloud (GCP)',
+          data: [8.4, 9.2, 10.1, 11.5],
+          borderColor: '#00E676',
+          backgroundColor: 'rgba(0, 230, 118, 0.1)',
+          borderWidth: 3,
+          pointBackgroundColor: '#00E676',
+          pointRadius: 4,
+          fill: true,
+          tension: 0.4
+        }
+      ]
+    },
+    options: {
+      ...commonOptions,
+      plugins: {
+        ...commonOptions.plugins,
+        title: { display: false }
+      },
+      scales: {
+        ...commonOptions.scales,
+        y: {
+          ...commonOptions.scales.y,
+          title: { display: true, text: 'Revenue (Billions USD)', color: '#64748b' }
+        }
+      }
+    }
+  });
+
+  const marginCtx = document.getElementById('marginChart').getContext('2d');
+  new Chart(marginCtx, {
+    type: 'bar',
+    data: {
+      labels: quarters,
+      datasets: [
+        {
+          label: 'AWS Margin %',
+          data: [29.5, 30.1, 31.0, 32.5],
+          backgroundColor: '#FFB020',
+          borderRadius: 4
+        },
+        {
+          label: 'Azure Margin %',
+          data: [42.0, 43.5, 45.1, 46.2],
+          backgroundColor: '#00C2FF',
+          borderRadius: 4
+        },
+        {
+          label: 'GCP Margin %',
+          data: [9.5, 11.2, 12.5, 14.0],
+          backgroundColor: '#00E676',
+          borderRadius: 4
+        }
+      ]
+    },
+    options: {
+      ...commonOptions,
+      scales: {
+        ...commonOptions.scales,
+        y: {
+          ...commonOptions.scales.y,
+          title: { display: true, text: 'Operating Margin (%)', color: '#64748b' },
+          max: 50
+        }
+      }
+    }
+  });
+
+  const rawWorkloadLabels = ['Raw Compute (IaaS)', 'AI Platform & APIs (PaaS)', 'Data & Analytics', 'SaaS & Copilots'];
+  const workloadLabels = rawWorkloadLabels.map(wrapLabelText);
+  
+  const workloadCtx = document.getElementById('workloadChart').getContext('2d');
+  new Chart(workloadCtx, {
+    type: 'bar',
+    data: {
+      labels: workloadLabels,
+      datasets: [
+        {
+          label: 'Amazon (AWS)',
+          data: [55, 20, 25, 5],
+          backgroundColor: '#FFB020',
+          borderWidth: 0
+        },
+        {
+          label: 'Microsoft (Azure)',
+          data: [35, 45, 15, 60],
+          backgroundColor: '#00C2FF',
+          borderWidth: 0
+        },
+        {
+          label: 'Google (GCP)',
+          data: [10, 35, 60, 35],
+          backgroundColor: '#00E676',
+          borderWidth: 0
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      indexAxis: 'y',
+      color: '#cbd5e1',
+      plugins: {
+        legend: { labels: { color: '#cbd5e1' } },
+        ...tooltipConfig
+      },
+      scales: {
+        x: { 
+          stacked: true, 
+          grid: { color: 'rgba(255, 255, 255, 0.05)' },
+          ticks: { color: '#94a3b8', display: false }
+        },
+        y: { 
+          stacked: true, 
+          grid: { display: false },
+          ticks: { color: '#cbd5e1', font: { family: 'Inter', weight: 'bold' } }
+        }
+      }
+    }
+  });
+
+  const marketLabelsRaw = ['Amazon AWS', 'Microsoft Azure', 'Google Cloud', 'Other Providers'];
+  const marketLabels = marketLabelsRaw.map(wrapLabelText);
+  
+  const marketCtx = document.getElementById('marketShareChart').getContext('2d');
+  new Chart(marketCtx, {
+    type: 'doughnut',
+    data: {
+      labels: marketLabels,
+      datasets: [{
+        data: [31, 26, 10, 33],
+        backgroundColor: [
+          '#FFB020',
+          '#00C2FF',
+          '#00E676',
+          '#334155'
+        ],
+        borderWidth: 2,
+        borderColor: '#0F172A',
+        hoverOffset: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '75%',
+      plugins: {
+        legend: { 
+          position: 'bottom',
+          labels: { color: '#cbd5e1', padding: 20, usePointStyle: true, font: {size: 11} }
+        },
+        ...tooltipConfig
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
