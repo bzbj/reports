@@ -20,10 +20,10 @@ Then visit `http://localhost:8080`.
 
 ## GitHub Pages Setup
 
-Recommended repository for a user site:
+Repository:
 
 ```bash
-git remote add origin https://github.com/bzbj/bzbj.github.io.git
+git remote add origin git@github.com:bzbj/reports.git
 git push -u origin main
 ```
 
@@ -38,18 +38,5 @@ In GitHub:
 The site will publish at:
 
 ```text
-https://bzbj.github.io/
-```
-
-For a project site instead, create another repository name and use:
-
-```bash
-git remote add origin https://github.com/bzbj/<repo-name>.git
-git push -u origin main
-```
-
-The project site URL will usually be:
-
-```text
-https://bzbj.github.io/<repo-name>/
+https://bzbj.github.io/reports/
 ```
