@@ -18,6 +18,8 @@
   .market-legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 14px; margin-top: 18px; font-size: 12px; color: #cbd5e1; }
   .market-legend span { display: flex; align-items: center; gap: 7px; min-width: 0; }
   .legend-dot { width: 12px; height: 12px; border-radius: 999px; flex: 0 0 12px; box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.9); }
+  .note-box { border: 1px solid rgba(0, 194, 255, 0.22); border-radius: 8px; background: rgba(14, 116, 144, 0.12); color: #cbd5e1; }
+  .source-link { color: #67e8f9; text-decoration: underline; text-underline-offset: 3px; }
   @media (max-width: 767px) {
     .azure-flow { grid-template-columns: 1fr; }
     .azure-card { min-height: 0; }
@@ -49,47 +51,51 @@
 <div class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-6 py-8">
   
   <header class="text-center mb-10">
-    <div class="inline-block px-3 py-1 rounded-full bg-slate-800 text-cyan-400 font-semibold tracking-wider text-xs mb-3 uppercase">Q1 2025 - Q4 2025 Market Analysis</div>
+    <div class="inline-block px-3 py-1 rounded-full bg-slate-800 text-cyan-400 font-semibold tracking-wider text-xs mb-3 uppercase">Fact-checked 2025 Cloud Analysis</div>
     <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">The AI Cloud <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">Supremacy War</span></h1>
-    <p class="text-base md:text-lg text-slate-400 max-w-3xl mx-auto">Generative AI has fundamentally reshaped the cloud infrastructure landscape. We analyze the recent quarterly performance of Amazon (AWS), Microsoft (Azure), and Google (GCP) to determine who is truly capturing the AI demand.</p>
+    <p class="text-base md:text-lg text-slate-400 max-w-3xl mx-auto">Generative AI has accelerated cloud infrastructure demand. This version aligns the revenue chart to Microsoft FY2025 quarters and treats Azure quarterly revenue as an estimate anchored to Microsoft-disclosed FY2025 Azure revenue of more than $75B.</p>
   </header>
 
   <section class="mb-10">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div class="glass-card rounded-xl p-5 text-center transform transition duration-500 hover:scale-105">
         <div class="text-3xl mb-3">☁️</div>
-        <h3 class="text-slate-400 text-lg font-semibold mb-2">Total Cloud Market YoY</h3>
-        <div class="text-4xl font-bold text-white mb-2">+24.5%</div>
-        <p class="text-sm text-slate-500">Accelerated by Enterprise AI adoption</p>
+        <h3 class="text-slate-400 text-lg font-semibold mb-2">Aligned Revenue Total</h3>
+        <div class="text-4xl font-bold text-white mb-2">$240.6B</div>
+        <p class="text-sm text-slate-500">AWS + Azure estimate + Google Cloud over aligned FY25</p>
       </div>
       <div class="glass-card rounded-xl p-5 text-center transform transition duration-500 hover:scale-105 border-t-4 border-t-cyan-500">
         <div class="text-3xl mb-3">🚀</div>
-        <h3 class="text-slate-400 text-lg font-semibold mb-2">Fastest Growing Vendor</h3>
-        <div class="text-4xl font-bold text-azure mb-2">Microsoft</div>
-        <p class="text-sm text-slate-500">Driven by OpenAI integration stack</p>
+        <h3 class="text-slate-400 text-lg font-semibold mb-2">FY25 Q4 Azure Growth</h3>
+        <div class="text-4xl font-bold text-azure mb-2">+39%</div>
+        <p class="text-sm text-slate-500">Microsoft-disclosed Azure and other cloud services growth</p>
       </div>
       <div class="glass-card rounded-xl p-5 text-center transform transition duration-500 hover:scale-105 border-t-4 border-t-orange-500">
         <div class="text-3xl mb-3">💰</div>
-        <h3 class="text-slate-400 text-lg font-semibold mb-2">Highest Total Revenue</h3>
-        <div class="text-4xl font-bold text-aws mb-2">Amazon</div>
-        <p class="text-sm text-slate-500">Massive existing infrastructure base</p>
+        <h3 class="text-slate-400 text-lg font-semibold mb-2">Highest Aligned Revenue</h3>
+        <div class="text-4xl font-bold text-aws mb-2">AWS</div>
+        <p class="text-sm text-slate-500">$116.5B across the aligned FY25 quarters</p>
       </div>
     </div>
+  </section>
+
+  <section class="note-box p-4 mb-10 text-sm">
+    <p><strong class="text-white">Method note:</strong> revenue is aligned to FY25 Q1-Q4: quarters ended Sep. 30, 2024; Dec. 31, 2024; Mar. 31, 2025; and Jun. 30, 2025. AWS and Google Cloud use reported segment revenue. Azure uses a $75.0B annual anchor and Microsoft Cloud quarterly seasonality as the allocation proxy because Microsoft does not publish Azure quarterly revenue dollars.</p>
   </section>
 
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-10">
     
     <section class="glass-card rounded-xl p-5 md:p-6">
-      <h2 class="text-xl font-bold mb-3 flex items-center"><span class="text-xl mr-2">📈</span> Quarterly Revenue Trajectory</h2>
-      <p class="text-slate-400 mb-4 text-sm">While AWS remains the largest provider by absolute revenue, Microsoft's Azure has demonstrated the steepest growth curve over the last four quarters, rapidly closing the gap. Google Cloud maintains steady, profitable growth.</p>
+      <h2 class="text-xl font-bold mb-3 flex items-center"><span class="text-xl mr-2">📈</span> Cloud Revenue Trajectory</h2>
+      <p class="text-slate-400 mb-4 text-sm">Aligned to Microsoft FY2025 quarters. AWS and Google Cloud are reported segment revenue; Azure is modeled from a $75.0B annual anchor, allocated by Microsoft Cloud quarterly seasonality.</p>
       <div class="chart-container">
         <canvas id="revenueChart"></canvas>
       </div>
     </section>
 
     <section class="glass-card rounded-xl p-5 md:p-6">
-      <h2 class="text-xl font-bold mb-3 flex items-center"><span class="text-xl mr-2">📊</span> Operating Margins Breakdown</h2>
-      <p class="text-slate-400 mb-4 text-sm">Profitability tells a distinct story. Azure benefits from higher-margin AI software services (Copilot, OpenAI APIs). AWS maintains strong infrastructure margins, while GCP has successfully transitioned into sustained profitability.</p>
+      <h2 class="text-xl font-bold mb-3 flex items-center"><span class="text-xl mr-2">📊</span> Reported Operating Margins</h2>
+      <p class="text-slate-400 mb-4 text-sm">AWS and Google Cloud publish segment operating income, enabling margin calculation for the same aligned quarters. Azure-only operating margin is not disclosed, so it is not plotted.</p>
       <div class="chart-container">
         <canvas id="marginChart"></canvas>
       </div>
@@ -100,7 +106,7 @@
   <section class="mb-10">
     <div class="glass-card rounded-xl p-5 md:p-6">
       <h2 class="text-2xl font-bold mb-4 text-center">The AI Workload Catalyst</h2>
-      <p class="text-slate-400 text-center max-w-4xl mx-auto mb-6 text-base">AI isn't just driving compute; it's driving distinct layers of cloud services. Microsoft is capturing the high-level PaaS/SaaS AI API market, whereas Amazon and Google are battling fiercely for the foundational model training and proprietary silicon (IaaS) tier.</p>
+      <p class="text-slate-400 text-center max-w-4xl mx-auto mb-6 text-base">AI demand is visible in cloud growth, but workload mix is not fully disclosed in comparable form across AWS, Azure, and Google Cloud. The chart below is directional positioning, not measured market share.</p>
       
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 items-center">
         <div class="lg:col-span-1">
@@ -127,26 +133,25 @@
 
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-10">
     <section class="lg:col-span-1 glass-card rounded-xl p-5 md:p-6 flex flex-col justify-center">
-      <h2 class="text-xl font-bold mb-3">Current Market Composition</h2>
-      <p class="text-slate-400 mb-4 text-sm">As of Q4 2025, the "Big Three" control the vast majority of the global cloud market. Microsoft's aggressive AI strategy has allowed it to consume market share from smaller legacy providers.</p>
+      <h2 class="text-xl font-bold mb-3">Aligned FY25 Revenue Mix</h2>
+      <p class="text-slate-400 mb-4 text-sm">Revenue share among the three plotted cloud businesses over the aligned FY25 period. AWS and Google Cloud use reported revenue; Azure uses the $75.0B estimate. This is not a global market share chart.</p>
       <div class="relative w-full aspect-square max-w-[240px] mx-auto">
         <canvas id="marketShareChart"></canvas>
         <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-           <span class="text-3xl font-bold text-white leading-none">67%</span>
-           <span class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Top 3 Total</span>
+           <span class="text-3xl font-bold text-white leading-none">$240.6B</span>
+           <span class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Aligned total</span>
         </div>
       </div>
       <div class="market-legend" aria-label="Market share legend">
-        <span><i class="legend-dot bg-aws"></i>Amazon AWS</span>
-        <span><i class="legend-dot bg-azure"></i>Microsoft Azure</span>
-        <span><i class="legend-dot bg-gcp"></i>Google Cloud</span>
-        <span><i class="legend-dot bg-slate-700"></i>Other Providers</span>
+        <span><i class="legend-dot bg-aws"></i>AWS 48.4%</span>
+        <span><i class="legend-dot bg-azure"></i>Azure est. 31.2%</span>
+        <span><i class="legend-dot bg-gcp"></i>Google Cloud 20.4%</span>
       </div>
     </section>
 
     <section class="lg:col-span-2 glass-card rounded-xl p-5 md:p-6">
-      <h2 class="text-xl font-bold mb-3">Why Microsoft Azure is the Primary AI Beneficiary</h2>
-      <p class="text-slate-400 mb-5 text-sm">Microsoft's strategic architecture creates a highly profitable feedback loop. By integrating AI at every layer of the enterprise stack, they monetize the same underlying compute infrastructure multiple times.</p>
+      <h2 class="text-xl font-bold mb-3">Why Azure Still Matters in AI</h2>
+      <p class="text-slate-400 mb-5 text-sm">Azure remains strategically important because Microsoft discloses strong FY2025 Azure growth and deep OpenAI integration. The revenue curve is an estimate, so it should be read as a modeled view rather than reported Azure quarterly revenue.</p>
       
       <div class="azure-flow">
         
@@ -161,7 +166,7 @@
           <div class="absolute -right-3 -top-3 text-5xl opacity-10 group-hover:opacity-20 transition-opacity duration-300">🧠</div>
           <div class="text-azure font-bold text-base mb-2">Layer 2: Models</div>
           <h4 class="text-white font-semibold mb-1">Azure OpenAI Service</h4>
-          <p class="text-xs text-slate-400">Exclusive cloud provider for OpenAI models (GPT-4.5), offering enterprise-grade security and compliance.</p>
+          <p class="text-xs text-slate-400">Azure is the exclusive cloud provider for stateless OpenAI APIs, while OpenAI can also commit to additional compute elsewhere as it scales.</p>
         </div>
 
         <div class="azure-card bg-slate-800 rounded-lg p-4 border-l-4 border-azure flex flex-col justify-center relative overflow-hidden group">
@@ -176,8 +181,14 @@
   </div>
 
   <footer class="text-center text-slate-500 text-sm mt-8 pt-6 border-t border-slate-800">
-    <p>Data presented is simulated for analytical demonstration based on Q4 2025 market projections.</p>
-    <p class="mt-2 text-xs">Developed by Canvas Infographics | UI/UX & Data Visualization Expert</p>
+    <p>Fact-checked against company disclosures where available. Azure quarterly revenue and directional workload positioning remain illustrative estimates.</p>
+    <p class="mt-2 text-xs">
+      Sources:
+      <a class="source-link" href="https://ir.aboutamazon.com/quarterly-results/default.aspx">Amazon quarterly results</a>,
+      <a class="source-link" href="https://abc.xyz/investor/">Alphabet IR</a>,
+      <a class="source-link" href="https://www.microsoft.com/en-us/investor/earnings/fy-2025-q4/metrics">Microsoft FY25 metrics</a>,
+      <a class="source-link" href="https://openai.com/index/continuing-microsoft-partnership/">OpenAI/Microsoft statement</a>.
+    </p>
   </footer>
 
 </div>
@@ -244,8 +255,12 @@
     }
   };
 
-  const rawQuarters = ['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025'];
-  const quarters = rawQuarters.map(wrapLabelText);
+  const quarters = [
+    ['FY25 Q1', 'Sep 2024'],
+    ['FY25 Q2', 'Dec 2024'],
+    ['FY25 Q3', 'Mar 2025'],
+    ['FY25 Q4', 'Jun 2025']
+  ];
 
   const revCtx = document.getElementById('revenueChart').getContext('2d');
   new Chart(revCtx, {
@@ -255,7 +270,7 @@
       datasets: [
         {
           label: 'Amazon Web Services (AWS)',
-          data: [24.5, 25.8, 27.2, 29.1],
+          data: [27.45, 28.8, 29.3, 30.9],
           borderColor: '#FFB020',
           backgroundColor: 'rgba(255, 176, 32, 0.1)',
           borderWidth: 3,
@@ -265,11 +280,12 @@
           tension: 0.4
         },
         {
-          label: 'Microsoft Azure',
-          data: [22.1, 24.3, 27.5, 31.0],
+          label: 'Microsoft Azure (estimated)',
+          data: [17.27, 18.16, 18.83, 20.74],
           borderColor: '#00C2FF',
           backgroundColor: 'rgba(0, 194, 255, 0.1)',
           borderWidth: 3,
+          borderDash: [6, 4],
           pointBackgroundColor: '#00C2FF',
           pointRadius: 4,
           fill: true,
@@ -277,7 +293,7 @@
         },
         {
           label: 'Google Cloud (GCP)',
-          data: [8.4, 9.2, 10.1, 11.5],
+          data: [11.35, 11.96, 12.26, 13.62],
           borderColor: '#00E676',
           backgroundColor: 'rgba(0, 230, 118, 0.1)',
           borderWidth: 3,
@@ -312,19 +328,13 @@
       datasets: [
         {
           label: 'AWS Margin %',
-          data: [29.5, 30.1, 31.0, 32.5],
+          data: [38.1, 36.8, 39.2, 33.0],
           backgroundColor: '#FFB020',
           borderRadius: 4
         },
         {
-          label: 'Azure Margin %',
-          data: [42.0, 43.5, 45.1, 46.2],
-          backgroundColor: '#00C2FF',
-          borderRadius: 4
-        },
-        {
           label: 'GCP Margin %',
-          data: [9.5, 11.2, 12.5, 14.0],
+          data: [17.1, 17.5, 17.8, 20.7],
           backgroundColor: '#00E676',
           borderRadius: 4
         }
@@ -337,7 +347,7 @@
         y: {
           ...commonOptions.scales.y,
           title: { display: true, text: 'Operating Margin (%)', color: '#64748b' },
-          max: 50
+          max: 45
         }
       }
     }
@@ -396,7 +406,7 @@
     }
   });
 
-  const marketLabelsRaw = ['Amazon AWS', 'Microsoft Azure', 'Google Cloud', 'Other Providers'];
+  const marketLabelsRaw = ['Amazon AWS', 'Microsoft Azure estimated', 'Google Cloud'];
   const marketLabels = marketLabelsRaw.map(wrapLabelText);
   
   const marketCtx = document.getElementById('marketShareChart').getContext('2d');
@@ -405,12 +415,11 @@
     data: {
       labels: marketLabels,
       datasets: [{
-        data: [31, 26, 10, 33],
+        data: [48.4, 31.2, 20.4],
         backgroundColor: [
           '#FFB020',
           '#00C2FF',
-          '#00E676',
-          '#334155'
+          '#00E676'
         ],
         borderWidth: 2,
         borderColor: '#0F172A',
